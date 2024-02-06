@@ -12,16 +12,17 @@ export default function Home() {
 		},
 	])
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
+		<main className='flex min-h-screen flex-col items-center justify-between p-24 relative'>
 			{/* Buttons to navigate to designated greetings page */}
 			<div>
 				{greetingsArray.map((greeting, index) => (
-					<button
+					<Link
+						href={greeting.link}
 						key={greeting.title}
-						className={`border border-black p-4 rounded-lg ${greeting.color} hover:bg-inherit transition-colors duration-300`}
+						className={`border border-black p-4 rounded-lg ${greeting.color} hover:bg-inherit transition-colors duration-300 block`}
 					>
-						<Link href={greeting.link}>{greeting.title}</Link>
-					</button>
+						{greeting.title}
+					</Link>
 				))}
 			</div>
 
