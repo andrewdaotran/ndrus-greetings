@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 import Footer from '../components/Footer'
+import Image from 'next/image'
 
 const BeMyValentine = () => {
 	const { width: screenWidth } = useWindowSize()
@@ -67,6 +68,8 @@ const BeMyValentine = () => {
 		'py-20 px-40 text-8xl z-10',
 	])
 
+	const pngImages = ['/png-images/doves.png']
+
 	const noButtonHandler = () => {
 		if (noClickedCounter === noClickedButtonContent.length - 1) {
 			setIsTooBad(true)
@@ -80,9 +83,19 @@ const BeMyValentine = () => {
 	}
 
 	return (
-		<div className='relative grid justify-items-center items-center h-screen'>
+		<div className='relative grid justify-items-center items-center grid-rows-12 h-screen'>
 			{!isYesClicked && !isTooBad && (
-				<div className='relative'>
+				<div className='relative grid justify-items-center items-center row-start-5 row-end-6'>
+					<Image
+						src={'/png-images/doves.png'}
+						alt={'doves'}
+						// width={screenWidth > 768 ? 200 : 150}
+						// height={screenWidth > 768 ? 200 : 150}
+						width={200}
+						height={200}
+						priority
+						className=''
+					/>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>Will you be my Valentine?</h2>
 						<div className='flex gap-10  justify-center items-center relative -translate-y'>
@@ -131,30 +144,39 @@ const BeMyValentine = () => {
 			{/* Will you be my Valentine No button movement end */}
 
 			{/* YES Modal */}
-			{isYesClicked && (
-				<div className='relative'>
+			{/* {isYesClicked && (
+				<div className='relative row-start-5 row-end-6'>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>
 							YAY! HAPPY VALENTINES DAY MY VALENTINE
 						</h2>
 					</div>
 				</div>
-			)}
+			)} */}
 
 			{/* YES Modal End */}
 
 			{/* YES Modal */}
-			{isYesClicked ||
-				(isTooBad && (
-					<div className='relative'>
-						<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
-							<h2 className='text-3xl text-center '>
-								{isYesClicked ? 'YAY!' : isTooBad ? 'TOO BAD!' : ''} HAPPY
-								VALENTINES DAY MY VALENTINE
-							</h2>
-						</div>
+			{(isYesClicked || isTooBad) && (
+				<div className='relative row-start-5 row-end-6 grid justify-items-center items-center'>
+					<Image
+						src={'/png-images/olives.png'}
+						alt={'olives'}
+						// width={screenWidth > 768 ? 200 : 150}
+						// height={screenWidth > 768 ? 200 : 150}
+						width={200}
+						height={200}
+						priority
+						className=''
+					/>
+					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
+						<h2 className='text-3xl text-center '>
+							{isYesClicked ? 'YAY!' : isTooBad ? 'TOO BAD!' : ''} HAPPY
+							VALENTINES DAY MY VALENTINE
+						</h2>
 					</div>
-				))}
+				</div>
+			)}
 
 			{/* YES Modal End */}
 
