@@ -8,8 +8,6 @@ import Image from 'next/image'
 const BeMyValentine = () => {
 	const { width: screenWidth } = useWindowSize()
 
-	console.log(screenWidth)
-
 	const [noClickedCounter, setNoClickedCounter] = useState(0)
 
 	const [isYesClicked, setIsYesClicked] = useState(false)
@@ -22,7 +20,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'py-[0.6rem] px-5 text-sm',
 			yesButtonSizeSmall: 'py-2 px-4',
 			yesButtonSizeLarge: 'py-2 px-4',
-			pngImage: '/png-images/doves.png',
+			pngImage: '/be-my-valentine-images/doves.png',
 			pngAlt: 'doves',
 		},
 		{
@@ -30,7 +28,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'py-[0.6rem] px-4 text-sm',
 			yesButtonSizeSmall: 'py-3 px-6',
 			yesButtonSizeLarge: 'py-4 px-8',
-			pngImage: '/png-images/crush-on-you.png',
+			pngImage: '/be-my-valentine-images/crush-on-you.png',
 			pngAlt: 'crush-on-you',
 		},
 		{
@@ -38,7 +36,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'py-[0.5rem] px-3 text-xs',
 			yesButtonSizeSmall: 'py-4 px-8 text-xl',
 			yesButtonSizeLarge: 'py-6 px-12 text-xl',
-			pngImage: '/png-images/pho.png',
+			pngImage: '/be-my-valentine-images/pho.png',
 			pngAlt: 'pho',
 		},
 		{
@@ -46,7 +44,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'py-[0.5rem] px-2 text-xs',
 			yesButtonSizeSmall: 'py-5 px-10 text-2xl',
 			yesButtonSizeLarge: 'py-8 px-16 text-2xl',
-			pngImage: '/png-images/cuckoo.png',
+			pngImage: '/be-my-valentine-images/cuckoo.png',
 			pngAlt: 'cuckoo',
 		},
 		{
@@ -54,7 +52,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'py-[0.5rem] px-2 text-xs absolute -top-5 right-10 ',
 			yesButtonSizeSmall: 'py-6 px-12 text-3xl z-10',
 			yesButtonSizeLarge: 'py-10 px-20 text-3xl z-10',
-			pngImage: '/png-images/pepper.png',
+			pngImage: '/be-my-valentine-images/pepper.png',
 			pngAlt: 'pepper',
 		},
 		{
@@ -62,7 +60,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'px-1 text-xs absolute -bottom-2 left-10',
 			yesButtonSizeSmall: 'py-7 px-[3.5rem] text-4xl z-10',
 			yesButtonSizeLarge: 'py-12 px-24 text-4xl z-10',
-			pngImage: '/png-images/lava.png',
+			pngImage: '/be-my-valentine-images/lava.png',
 			pngAlt: 'lava',
 		},
 		{
@@ -71,16 +69,16 @@ const BeMyValentine = () => {
 				'px-1 text-[10px] absolute transform left-10 top-[11.9rem]  ',
 			yesButtonSizeSmall: 'py-8 px-16 text-4xl z-10',
 			yesButtonSizeLarge: 'py-14 px-28 text-5xl z-10',
-			pngImage: '/png-images/whale.png',
+			pngImage: '/be-my-valentine-images/whale.png',
 			pngAlt: 'whale',
 		},
 		{
 			noClickedButtonContent: 'you hate me...',
 			noButtonSize:
-				'px-1 text-[8px] absolute  transform -right-[3.2rem]  rotate-90 top-[50%] -translate-x-1/2 sm:-right-[4.2rem]',
+				'px-1 text-[8px] absolute  transform -right-[3.3rem]  rotate-90 top-[50%] -translate-x-1/2 sm:-right-[4.3rem]',
 			yesButtonSizeSmall: 'py-9 px-[4.5rem] text-4xl z-10',
 			yesButtonSizeLarge: 'py-16 px-32 text-6xl z-10',
-			pngImage: '/png-images/smores.png',
+			pngImage: '/be-my-valentine-images/smores.png',
 			pngAlt: 'smores',
 		},
 		{
@@ -88,7 +86,7 @@ const BeMyValentine = () => {
 			noButtonSize: 'px-1 text-[8px] absolute  transform  top-0 right-0 z-20',
 			yesButtonSizeSmall: 'py-10 px-20 text-5xl z-10',
 			yesButtonSizeLarge: 'py-[4.5rem] px-36 text-7xl z-10',
-			pngImage: '/png-images/tomatoes.png',
+			pngImage: '/be-my-valentine-images/tomatoes.png',
 			pngAlt: 'tomatoes',
 		},
 		{
@@ -97,7 +95,7 @@ const BeMyValentine = () => {
 				'px-1 text-[6px] absolute  transform  top-[50%] rotate-90 -left-3  z-20',
 			yesButtonSizeSmall: 'py-[2.75rem] px-[5.5rem] text-5xl z-10',
 			yesButtonSizeLarge: 'py-20 px-40 text-8xl z-10',
-			pngImage: '/png-images/love-sucks.png',
+			pngImage: '/be-my-valentine-images/love-sucks.png',
 			pngAlt: 'love-sucks',
 		},
 	])
@@ -117,7 +115,7 @@ const BeMyValentine = () => {
 	return (
 		<div className='relative grid justify-items-center items-center grid-rows-12 h-screen'>
 			{!isYesClicked && !isTooBad && (
-				<div className='relative grid justify-items-center items-center row-start-5 row-end-6'>
+				<div className='relative grid justify-items-center items-center row-start-5 row-end-7'>
 					<Image
 						src={counterArray[noClickedCounter].pngImage}
 						alt={counterArray[noClickedCounter].pngAlt}
@@ -177,7 +175,7 @@ const BeMyValentine = () => {
 			{(isYesClicked || isTooBad) && (
 				<div className='relative row-start-5 row-end-6 grid justify-items-center items-center'>
 					<Image
-						src={'/png-images/olives.png'}
+						src={'/be-my-valentine-images/olives.png'}
 						alt={'olives'}
 						width={200}
 						height={200}
@@ -186,9 +184,9 @@ const BeMyValentine = () => {
 					/>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>
-							{isYesClicked ? 'YAY!' : isTooBad ? 'TOO BAD!' : ''} HAPPY
-							VALENTINES DAY MY VALENTINE
+							{isYesClicked ? 'Okay yay!' : isTooBad ? 'TOO BAD!' : ''}
 						</h2>
+						<h2 className='text-2xl'>HAPPY VALENTINE&apos;S DAY</h2>
 					</div>
 				</div>
 			)}

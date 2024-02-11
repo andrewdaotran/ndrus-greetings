@@ -16,6 +16,15 @@ const config: Config = {
 			screens: {
 				xs: '400px',
 			},
+			animation: {
+				rise: 'rise 3s linear infinite',
+			},
+			keyframes: {
+				rise: {
+					'100%': { transform: 'translateX(100%)' },
+					// '50%': { transform: 'rotate(3deg)' },
+				},
+			},
 		},
 	},
 	plugins: [],
