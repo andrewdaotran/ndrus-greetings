@@ -1,11 +1,76 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 import Footer from '../components/Footer'
 import Image from 'next/image'
+import { FaHeart } from 'react-icons/fa'
+
+async function getData() {
+	const heartArray = Array(100).fill({
+		leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+		width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+	})
+	const tenArray = [
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+		{
+			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
+		},
+	]
+
+	return heartArray
+}
 
 const BeMyValentine = () => {
+	const [heartArray, setHeartArray] = useState<
+		{ leftPositon: string; width: string; height: string }[]
+	>([])
+
+	useEffect(() => {
+		getData().then((data) => setHeartArray(data))
+	}, [])
 	const { width: screenWidth } = useWindowSize()
 
 	const [noClickedCounter, setNoClickedCounter] = useState(0)
@@ -184,7 +249,7 @@ const BeMyValentine = () => {
 					/>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>
-							{isYesClicked ? 'Okay yay!' : isTooBad ? 'TOO BAD!' : ''}
+							{isYesClicked ? 'Okay yay!' : isTooBad ? 'Too bad!' : ''}
 						</h2>
 						<h2 className='text-2xl'>HAPPY VALENTINE&apos;S DAY</h2>
 					</div>
@@ -193,9 +258,24 @@ const BeMyValentine = () => {
 
 			{/* YES Modal End */}
 
-			{/* Too Bad Modal */}
+			{/* Floating Hearts */}
+			{heartArray.map((item, index) => {
+				console.log(item)
+				return (
+					<FaHeart
+						className={` text-red-600 border border-black absolute   animate-rise z-50 `}
+						key={index}
+						style={{
+							width: item.width,
+							height: item.height,
+							left: item.leftPositon,
+							bottom: '-' + item.height,
+						}}
+					/>
+				)
+			})}
 
-			{/* Too Bad Modal End */}
+			{/* Floating Hearts End */}
 
 			<Footer />
 		</div>
@@ -203,3 +283,28 @@ const BeMyValentine = () => {
 }
 
 export default BeMyValentine
+
+// export const getServersideProps: GetServerSideProps = async () => {
+// 	const hello = 'hello'
+// 	const tenArray = [
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
+// 	]
+// 	console.log(tenArray)
+// 	return {
+// 		props: {
+// 			hello,
+// 			tenArray,
+// 		},
+// 	}
+// }

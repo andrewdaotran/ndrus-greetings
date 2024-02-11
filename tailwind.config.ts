@@ -17,12 +17,15 @@ const config: Config = {
 				xs: '400px',
 			},
 			animation: {
-				rise: 'rise 3s linear infinite',
+				rise: `rise 5s linear `,
+				// rise: `rise ${String(
+				// 	Math.random() * (5 - 5) + 5
+				// )}s ease-in-out infinite alternate`,
 			},
 			keyframes: {
 				rise: {
-					'100%': { transform: 'translateX(100%)' },
-					// '50%': { transform: 'rotate(3deg)' },
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(calc(-100vh - 200px))' },
 				},
 			},
 		},
