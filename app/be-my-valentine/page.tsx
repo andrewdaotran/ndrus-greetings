@@ -8,8 +8,8 @@ import Image from 'next/image'
 async function getData() {
 	let heartArray = []
 
-	for (let i = 0; i < 20; i++) {
-		const leftPositon = String(Math.floor(Math.random() * (100 - 1) + 1)) + '%'
+	for (let i = 0; i < 50; i++) {
+		const leftPositon = String(Math.floor(Math.random() * 100)) + '%'
 		const width = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
 		const height = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
 		const size = Math.floor(Math.random() * (200 - 50) + 50)
@@ -235,13 +235,15 @@ const BeMyValentine = () => {
 							alt='heart'
 							priority
 							loading='eager'
+							// width={50}
+							// height={50}
 							width={item.size}
 							height={item.size}
-							className={`  border-black absolute z-50 `}
+							className={`  border-black absolute z-50 animate-rise `}
 							key={index}
 							style={{
 								left: item.leftPositon,
-								bottom: '-20rem',
+								bottom: '-13rem',
 								// bottom: '-' + item.height,
 								transform: `rotate(${item.tilt}deg)`,
 								animation: `rise ${item.riseTime}s linear`,
