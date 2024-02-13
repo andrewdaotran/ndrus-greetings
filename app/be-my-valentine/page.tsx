@@ -109,7 +109,7 @@ const BeMyValentine = () => {
 			noButtonSize:
 				'px-1 text-[8px] absolute  transform -right-[3.3rem]  rotate-90 top-[50%] -translate-x-1/2 sm:-right-[4.3rem]',
 			yesButtonSizeSmall: 'py-8 px-16 text-4xl z-10',
-			yesButtonSizeLarge: 'py-16 px-32 text-6xl z-10',
+			yesButtonSizeLarge: ' py-14 px-28 text-6xl z-10',
 			pngImage: '/be-my-valentine-images/smores.png',
 			pngAlt: 'smores',
 		},
@@ -117,7 +117,7 @@ const BeMyValentine = () => {
 			noClickedButtonContent: "you're evil",
 			noButtonSize: 'px-1 text-[8px] absolute  transform  top-0 right-0 z-20',
 			yesButtonSizeSmall: 'py-9 px-[4.5rem]  text-5xl z-10',
-			yesButtonSizeLarge: 'py-[4.5rem] px-36 text-7xl z-10',
+			yesButtonSizeLarge: ' py-16 px-32 text-7xl z-10',
 			pngImage: '/be-my-valentine-images/tomatoes.png',
 			pngAlt: 'tomatoes',
 		},
@@ -126,7 +126,7 @@ const BeMyValentine = () => {
 			noButtonSize:
 				'px-1 text-[6px] absolute  transform  top-[50%] rotate-90 -left-3  z-20',
 			yesButtonSizeSmall: ' py-10 px-20 text-5xl z-10',
-			yesButtonSizeLarge: 'py-20 px-40 text-8xl z-10',
+			yesButtonSizeLarge: 'py-[4.5rem] px-36 text-8xl z-10',
 			pngImage: '/be-my-valentine-images/love-sucks.png',
 			pngAlt: 'love-sucks',
 		},
