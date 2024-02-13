@@ -4,68 +4,35 @@ import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 import Footer from '../components/Footer'
 import Image from 'next/image'
-import { FaHeart } from 'react-icons/fa'
 
 async function getData() {
-	const heartArray = Array(100).fill({
-		leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-		width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-	})
-	const tenArray = [
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-		{
-			leftPositon: String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-			width: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-			height: `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`,
-		},
-	]
+	let heartArray = []
+
+	for (let i = 0; i < 20; i++) {
+		const leftPositon = String(Math.floor(Math.random() * (100 - 1) + 1)) + '%'
+		const width = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
+		const height = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
+		const size = Math.floor(Math.random() * (200 - 50) + 50)
+		const tilt = Math.floor(Math.random() * (20 - 5) + 5)
+		const riseTime = Math.floor(Math.random() * (4 - 1) + 3)
+		const delay = Math.floor(Math.random() * 3)
+		heartArray.push({ leftPositon, width, height, size, tilt, riseTime, delay })
+	}
 
 	return heartArray
 }
 
 const BeMyValentine = () => {
 	const [heartArray, setHeartArray] = useState<
-		{ leftPositon: string; width: string; height: string }[]
+		{
+			leftPositon: string
+			width: string
+			height: string
+			size: number
+			tilt: number
+			riseTime: number
+			delay: number
+		}[]
 	>([])
 
 	useEffect(() => {
@@ -178,7 +145,7 @@ const BeMyValentine = () => {
 	}
 
 	return (
-		<div className='relative grid justify-items-center items-center grid-rows-12 h-screen'>
+		<div className='fixed grid justify-items-center items-center grid-rows-12 h-screen  left-[50%] translate-x-[-50%] border border-black w-full'>
 			{!isYesClicked && !isTooBad && (
 				<div className='relative grid justify-items-center items-center row-start-5 row-end-7'>
 					<Image
@@ -259,21 +226,30 @@ const BeMyValentine = () => {
 			{/* YES Modal End */}
 
 			{/* Floating Hearts */}
-			{heartArray.map((item, index) => {
-				console.log(item)
-				return (
-					<FaHeart
-						className={` text-red-600 border border-black absolute   animate-rise z-50 `}
-						key={index}
-						style={{
-							width: item.width,
-							height: item.height,
-							left: item.leftPositon,
-							bottom: '-' + item.height,
-						}}
-					/>
-				)
-			})}
+			{(isTooBad || isYesClicked) &&
+				heartArray.map((item, index) => {
+					// console.log(item)
+					return (
+						<Image
+							src={'/be-my-valentine-images/heart.png'}
+							alt='heart'
+							priority
+							loading='eager'
+							width={item.size}
+							height={item.size}
+							className={`  border-black absolute z-50 `}
+							key={index}
+							style={{
+								left: item.leftPositon,
+								bottom: '-20rem',
+								// bottom: '-' + item.height,
+								transform: `rotate(${item.tilt}deg)`,
+								animation: `rise ${item.riseTime}s linear`,
+								animationDelay: `${item.delay}s`,
+							}}
+						/>
+					)
+				})}
 
 			{/* Floating Hearts End */}
 
@@ -283,28 +259,3 @@ const BeMyValentine = () => {
 }
 
 export default BeMyValentine
-
-// export const getServersideProps: GetServerSideProps = async () => {
-// 	const hello = 'hello'
-// 	const tenArray = [
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 		String(Math.floor(Math.random() * (100 - 1) + 1)) + '%',
-// 	]
-// 	console.log(tenArray)
-// 	return {
-// 		props: {
-// 			hello,
-// 			tenArray,
-// 		},
-// 	}
-// }

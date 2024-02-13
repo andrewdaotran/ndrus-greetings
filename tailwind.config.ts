@@ -17,7 +17,7 @@ const config: Config = {
 				xs: '400px',
 			},
 			animation: {
-				rise: `rise 5s linear `,
+				rise: `rise linear`,
 				// rise: `rise ${String(
 				// 	Math.random() * (5 - 5) + 5
 				// )}s ease-in-out infinite alternate`,
@@ -25,7 +25,7 @@ const config: Config = {
 			keyframes: {
 				rise: {
 					'0%': { transform: 'translateY(0)' },
-					'100%': { transform: 'translateY(calc(-100vh - 200px))' },
+					'100%': { transform: 'translateY(calc(-100vh - 500px))' },
 				},
 			},
 		},
