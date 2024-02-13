@@ -18,9 +18,6 @@ const config: Config = {
 			},
 			animation: {
 				rise: `rise 5s linear`,
-				// rise: `rise ${String(
-				// 	Math.random() * (5 - 5) + 5
-				// )}s ease-in-out infinite alternate`,
 			},
 			keyframes: {
 				rise: {

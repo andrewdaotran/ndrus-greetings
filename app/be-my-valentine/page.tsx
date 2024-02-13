@@ -8,32 +8,32 @@ import Image from 'next/image'
 async function getData() {
 	let heartArray = []
 
-	for (let i = 0; i < 50; i++) {
-		const leftPositon = String(Math.floor(Math.random() * 100)) + '%'
+	for (let i = 0; i < 35; i++) {
+		const leftPositon = String(Math.floor(Math.random() * 110 - 10)) + '%'
 		const width = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
 		const height = `${String(Math.floor(Math.random() * (20 - 5) + 5))}rem`
-		const size = Math.floor(Math.random() * (200 - 50) + 50)
-		const tilt = Math.floor(Math.random() * (20 - 5) + 5)
-		const riseTime = Math.floor(Math.random() * (4 - 1) + 3)
-		const delay = Math.floor(Math.random() * 3)
+		const size = Math.random() * (200 - 50) + 50
+		const tilt = Math.random() * (20 - 5) + 5
+		const riseTime = Math.random() * (4 - 1) + 3
+		const delay = Math.random() * 3
 		heartArray.push({ leftPositon, width, height, size, tilt, riseTime, delay })
 	}
 
 	return heartArray
 }
 
+interface Heart {
+	leftPositon: string
+	width: string
+	height: string
+	size: number
+	tilt: number
+	riseTime: number
+	delay: number
+}
+
 const BeMyValentine = () => {
-	const [heartArray, setHeartArray] = useState<
-		{
-			leftPositon: string
-			width: string
-			height: string
-			size: number
-			tilt: number
-			riseTime: number
-			delay: number
-		}[]
-	>([])
+	const [heartArray, setHeartArray] = useState<Heart[]>([])
 
 	useEffect(() => {
 		getData().then((data) => setHeartArray(data))
@@ -108,7 +108,7 @@ const BeMyValentine = () => {
 			noClickedButtonContent: 'you hate me...',
 			noButtonSize:
 				'px-1 text-[8px] absolute  transform -right-[3.3rem]  rotate-90 top-[50%] -translate-x-1/2 sm:-right-[4.3rem]',
-			yesButtonSizeSmall: 'py-9 px-[4.5rem] text-4xl z-10',
+			yesButtonSizeSmall: 'py-8 px-16 text-4xl z-10',
 			yesButtonSizeLarge: 'py-16 px-32 text-6xl z-10',
 			pngImage: '/be-my-valentine-images/smores.png',
 			pngAlt: 'smores',
@@ -116,7 +116,7 @@ const BeMyValentine = () => {
 		{
 			noClickedButtonContent: "you're evil",
 			noButtonSize: 'px-1 text-[8px] absolute  transform  top-0 right-0 z-20',
-			yesButtonSizeSmall: 'py-10 px-20 text-5xl z-10',
+			yesButtonSizeSmall: 'py-9 px-[4.5rem]  text-5xl z-10',
 			yesButtonSizeLarge: 'py-[4.5rem] px-36 text-7xl z-10',
 			pngImage: '/be-my-valentine-images/tomatoes.png',
 			pngAlt: 'tomatoes',
@@ -125,7 +125,7 @@ const BeMyValentine = () => {
 			noClickedButtonContent: 'fine...',
 			noButtonSize:
 				'px-1 text-[6px] absolute  transform  top-[50%] rotate-90 -left-3  z-20',
-			yesButtonSizeSmall: 'py-[2.75rem] px-[5.5rem] text-5xl z-10',
+			yesButtonSizeSmall: ' py-10 px-20 text-5xl z-10',
 			yesButtonSizeLarge: 'py-20 px-40 text-8xl z-10',
 			pngImage: '/be-my-valentine-images/love-sucks.png',
 			pngAlt: 'love-sucks',
@@ -154,7 +154,6 @@ const BeMyValentine = () => {
 						width={200}
 						height={200}
 						priority
-						loading='eager'
 					/>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>Will you be my Valentine?</h2>
@@ -212,7 +211,6 @@ const BeMyValentine = () => {
 						width={200}
 						height={200}
 						priority
-						loading='eager'
 					/>
 					<div className='border border-black p-8 grid gap-8 z-10 bg-white shadow-lg relative mx-4 sm:mx-0'>
 						<h2 className='text-3xl text-center '>
@@ -231,20 +229,16 @@ const BeMyValentine = () => {
 					// console.log(item)
 					return (
 						<Image
+							key={index}
 							src={'/be-my-valentine-images/heart.png'}
 							alt='heart'
 							priority
-							loading='eager'
-							// width={50}
-							// height={50}
 							width={item.size}
 							height={item.size}
 							className={`  border-black absolute z-50 animate-rise `}
-							key={index}
 							style={{
 								left: item.leftPositon,
 								bottom: '-13rem',
-								// bottom: '-' + item.height,
 								transform: `rotate(${item.tilt}deg)`,
 								animation: `rise ${item.riseTime}s linear`,
 								animationDelay: `${item.delay}s`,
