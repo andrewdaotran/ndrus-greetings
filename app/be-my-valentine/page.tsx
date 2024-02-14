@@ -100,7 +100,7 @@ const BeMyValentine = () => {
 			noButtonSize:
 				'px-1 text-[10px] absolute transform left-10 top-[11.9rem]  ',
 			yesButtonSizeSmall: 'py-8 px-16 text-3xl z-10',
-			yesButtonSizeLarge: 'py-[2.75rem] px-[5.5rem] text-3xl z-10',
+			yesButtonSizeLarge: 'py-[2.85rem] px-[5.75rem] text-4xl z-10',
 			pngImage: '/be-my-valentine-images/whale.png',
 			pngAlt: 'whale',
 		},
